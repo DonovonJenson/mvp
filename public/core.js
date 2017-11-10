@@ -8,17 +8,21 @@ angular.module('app')
 	  this.getRhymes = () => {
 	  	$http.get('/rhymes', {}).then((response) => {
 	  	this.rhyme = response.data
-  		 console.log(this)
+	  	if (this.rhyme.length === 0){
+	  		this.getRhymes();
+	  	}
   		})
+  		 console.log(this)
       }
 
       this.$onInit = () => {
-        setInterval(this.getRhymes, 5000);
+      	this.getRhymes();
+        //setInterval(this.getRhymes, 5000);
       };
 
     },
 
 
-    template: 'Hello, {{$ctrl.rhyme}}!'
+    template: 'Your Word Is: {{$ctrl.rhyme[0].word}}!'
 
 });

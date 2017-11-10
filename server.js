@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var http = require('http');
+var request = require('request')
 
 app.use(express.static(__dirname + '/public'))
 app.use(morgan('dev'));
@@ -20,25 +21,29 @@ app.get('/', (req, res) => {
 })
 
 app.get('/rhymes', (req, res) => {
+
+
 	console.log('rhymes incoming!');
 	res.status(200);
-	http.request('http://setgetgo.com/randomword/get.php', (response) => {
-		response.pipe(res);
-	  }).end() 
+	request('http://setgetgo.com/randomword/get.php', (error, response, body) => {
+      getRhymes(body, res);
+    });
 })
 
-function RandomWord() {
-    var requestStr = "http://randomword.setgetgo.com/get.php";
 
-    $.ajax({
-        type: "GET",
-        url: requestStr,
-        dataType: "jsonp",
-        jsonpCallback: 'RandomWordComplete'
-    });
+var getRhymes = (rhymeWord, res) => {
+	//console.log(rhymeWord)
+	var url = 'http://api.datamuse.com/words?rel_rhy=' + rhymeWord
+	var options = {
+		uri: url
+	}
+	request(options, (error, response, body) => {
+		console.log(error)
+		console.log(body);
+		res.send(body);
+
+	})
+
 }
 
-function RandomWordComplete(data) {
-    console.log(data.Word);
-}
     
