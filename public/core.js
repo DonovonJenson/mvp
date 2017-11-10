@@ -3,9 +3,9 @@ angular.module('app')
 .component('main', {
 	
 	controller: function() {
-    this.$onInit = function() {
-      console.log('sup');
-    };
-}
+	 this.message = 'HELLO!'
+    },
+
+    template: 'Hello, {{$ctrl.message}}!'
 
 });
