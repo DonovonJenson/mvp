@@ -3,21 +3,22 @@ angular.module('app')
 .component('main', {
 	
 	controller: function($http) {
-	  this.message = 'HELLO!';
+	  this.rhyme = 'Blank'
 
-	  this.getRhymes = function() {
-	  	$http.get('/rhymes', {}).then(function successCallback(response) {
-  		 console.log(response)
+	  this.getRhymes = () => {
+	  	$http.get('/rhymes', {}).then((response) => {
+	  	this.rhyme = response.data
+  		 console.log(this)
   		})
       }
 
-      this.$onInit = function () {
-        this.getRhymes();
+      this.$onInit = () => {
+        setInterval(this.getRhymes, 5000);
       };
 
     },
 
 
-    template: 'Hello, {{$ctrl.message}}!'
+    template: 'Hello, {{$ctrl.rhyme}}!'
 
 });
