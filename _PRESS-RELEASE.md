@@ -19,26 +19,44 @@ Once the project moves into development, the press release can be used as a touc
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
 
+  Freestyle Rap Rhyme Helper Tool 
+
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+
+A tool which generates rhymes, allowing new rappers to learn freestyling more quickly. 
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
 
+  The freestyle rap rhyme helper tool takes an old technique - serving words - and adds to that additional rhymes. This will allow new rappers to learn how to freestyle while also adding to their rhyme base. It also gives beginners an approachable way into freestyling, as the pressure of rhyming is relieved.  
+
 ## Problem ##
   > Describe the problem your product solves.
+
+  New rappers often don't know where to begin for freestyling. They get hung up on the rhyme aspects and are incapable of working on anything else for a long time.
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
 
+  This tool will serve up both words and rhymes, freeing up beginners to think about other aspects, such as deivery and flow. 
+
 ## Quote from You ##
   > A quote from a spokesperson in your company.
+
+  "This is the tool I wanted when I was learning to freestyle. It allows a beginner to practice multiple skills and feel good in the process. It's going to change the way rappers learn to freestlye."
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
 
+  As soon as the page loads, words and rhymes will start being served to you. As soon as you're ready, jump in and start using them to freestyle! 
+
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
 
+  "I never thought I'd be able to freestyle. I could never think of rhymes! Now, I have a tool which allows me to skip that step. Also, I'm rhyming better in my freestyles even without it. It's amazing!"
+
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+
+  The freestyle rap rhyme tool is excellent for beginners and others alike. If you've ever wanted to improve your freestyle rap skills, try it out. There's no doubt you'll make massive gains in just a few short sessions. 
