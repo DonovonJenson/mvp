@@ -17,3 +17,9 @@ app.get('/', (req, res) => {
 	res.status(200);
 	res.sendfile('./public/index.html')
 })
+
+app.get('/rhymes', (req, res) => {
+	console.log('rhymes incoming!');
+	res.status(200);
+	res.end('got em!')
+})
