@@ -12,11 +12,13 @@ angular.module('app')
 	  		this.getRhymes();
 	  	} else {
 	  		response.data.sort((a,b) => {
-	  		if (a.score !== b.score){
-	  			return b.score - a.score
-	  		} else {
-			return b.freq - a.freq;
-			  }
+		  		if (a.score !== b.score){
+		  			return b.score - a.score
+		  		} else if (a.syllables !== b.syllables) {
+		  			return a.syllables - b.syllables
+		  		} else {
+				  return b.freq - a.freq;
+				  }
 			})
 			console.log(response.data)
 	  		this.rhyme = response.data
