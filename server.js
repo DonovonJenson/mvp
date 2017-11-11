@@ -36,6 +36,15 @@ app.get('/', (req, res) => {
 	res.sendfile('./public/index.html')
 })
 
+app.post('/remove', (req, res) =>{
+	res.status(201);
+	console.log(req.body)
+	Rhymeset.find({ core:req.body.core}).remove( (err, info)=>{
+		console.log(info)
+		res.send('removed!' + req.body.core)
+	} )
+})
+
 app.get('/rhymes', (req, res) => {
 	res.status(200);
 	getRhymesFromDatabase(res);
