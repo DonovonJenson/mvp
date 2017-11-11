@@ -21,11 +21,6 @@ app.get('/', (req, res) => {
 })
 
 app.get('/rhymes', (req, res) => {
-
-
-
-
-	console.log('rhymes incoming!');
 	res.status(200);
 	request('http://setgetgo.com/randomword/get.php', (error, response, body) => {
       getRhymes(body, res);
@@ -34,8 +29,6 @@ app.get('/rhymes', (req, res) => {
 
 
 var getRhymes = (rhymeWord, res) => {
-
-
 	//Rhymebrain results 
 	var brainurl = 'http://rhymebrain.com/talk?function=getRhymes&word=' + rhymeWord;
 	var brainOptions = {
@@ -43,21 +36,7 @@ var getRhymes = (rhymeWord, res) => {
 	}
 	request(brainOptions, (error, response, body) => {
 		res.send(body);
-
 	})
-
-
-	// //console.log(rhymeWord)
-	// var url = 'http://api.datamuse.com/words?rel_rhy=' + rhymeWord
-	// var options = {
-	// 	uri: url
-	// }
-	// request(options, (error, response, body) => {
-	// 	console.log(error)
-	// 	console.log(body);
-	// 	res.send(body);
-
-	// })
 
 }
 

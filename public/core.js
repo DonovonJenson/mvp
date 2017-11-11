@@ -4,10 +4,10 @@ angular.module('app')
 	
 	controller: function($http) {
 	  this.rhyme = 'Blank'
+	  this.speed = 5000;
 
 	  this.getRhymes = () => {
 	  	$http.get('/rhymes', {}).then((response) => {
-	  		console.log(response.data)
 	  	if (response.data.length < 5){
 	  		this.getRhymes();
 	  	} else {
@@ -28,8 +28,22 @@ angular.module('app')
 
       this.$onInit = () => {
       	this.getRhymes();
-        //setInterval(this.getRhymes, 5000);
+        var continousRhymes = setInterval(this.getRhymes, this.speed);
       };
+
+      this.speedIncrease = () => {
+      	clearInterval(continousRhymes)
+      	this.speed += 1000;
+      	var continousRhymes = setInterval(this.getRhymes, this.speed);
+
+      }
+
+      this.speedDecrease = () => {
+      	clearInterval(continousRhymes);
+      	this.speed -= 1000;
+      	console.log(this.speed)
+      	var continousRhymes = setInterval(this.getRhymes, this.speed);
+      }
 
     },
 
