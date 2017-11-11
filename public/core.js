@@ -8,22 +8,16 @@ angular.module('app')
 
 	  this.getRhymes = () => {
 	  	$http.get('/rhymes', {}).then((response) => {
-	  	if (response.data.length < 5){
-	  		this.getRhymes();
-	  	} else {
-	  		response.data.sort((a,b) => {
-		  		if (a.score !== b.score){
-		  			return b.score - a.score
-		  		} else if (a.syllables !== b.syllables) {
-		  			return a.syllables - b.syllables
-		  		} else {
-				  return b.freq - a.freq;
-				  }
-			})
-			console.log(response.data)
-	  		this.rhyme = response.data
-	  	}
-  		})
+	  		response.data[0].rhymeSet.unshift(response.data[0].core)
+	  		this.rhyme = response.data[0].rhymeSet;
+	  		console.log(this.rhyme)
+	  // 	if (response.data.length < 5){
+	  // 		this.getRhymes();
+	  // 	} else {
+			// console.log(response.data)
+	  // 		this.rhyme = response.data
+	  // 	}
+  	 	})
       }
 
       this.$onInit = () => {

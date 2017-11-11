@@ -5,6 +5,7 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var http = require('http');
 var request = require('request')
+var rp = require('request-promise');
 var db = mongoose.connection;
 mongoose.connect('mongodb://localhost/test');
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -19,11 +20,6 @@ var rhymeSchema = mongoose.Schema ({
 
 var Rhymeset = mongoose.model('Rhymeset',rhymeSchema);
 
-var rhymeArray = ['one','done','fun']
-var newRhymes = new Rhymeset({core:'spun',rhymeSet: rhymeArray})
-newRhymes.save((err,newRhymes)=>{
-	console.log(newRhymes);
-})
 
 
 
@@ -42,10 +38,21 @@ app.get('/', (req, res) => {
 
 app.get('/rhymes', (req, res) => {
 	res.status(200);
+	getRhymesFromDatabase(res);
 	request('http://setgetgo.com/randomword/get.php', (error, response, body) => {
-      getRhymes(body, res);
+    //getRhymes(body, res);
     });
 })
+
+var getRhymesFromDatabase = (res) => {
+	Rhymeset.aggregate(
+   [ { $sample: { size: 1 } } ])
+	.then((data)=>{
+		console.log(data);
+		res.send(data);
+	})
+
+}
 
 
 var getRhymes = (rhymeWord, res) => {
@@ -54,8 +61,26 @@ var getRhymes = (rhymeWord, res) => {
 	var brainOptions = {
 		uri: brainurl
 	}
-	request(brainOptions, (error, response, body) => {
-		res.send(body);
+
+	rp(brainOptions, (error, response, body) => {})
+	.then((body) =>{
+		body = JSON.parse(body)
+	  		body.sort((a,b) => {
+  		if (a.score !== b.score){
+  			return b.score - a.score
+  		} else if (a.syllables !== b.syllables) {
+  			return a.syllables - b.syllables
+  		} else {
+		  return b.freq - a.freq;
+		  }
+	})
+	var currentRhyme = body[0].word
+	var rhymes = [body[1].word,body[2].word,body[3].word,body[4].word]
+	var newRhymes = new Rhymeset({core:currentRhyme,rhymeSet: rhymes})
+	newRhymes.save((err,newRhymes)=>{
+			//console.log(newRhymes)
+		})
+	//res.send(body);
 	})
 
 

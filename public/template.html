@@ -1,13 +1,13 @@
 <div class = 'main'>
 	<div class= 'title'>Your word is: 
-		<div class='mainword'>{{$ctrl.rhyme[0].word}}</div>
+		<div class='mainword'>{{$ctrl.rhyme[0]}}</div>
 	</div> 
 	Rhyme Helpers:
 	<div id = allhelpers>
-		<div class = 'helpers'> {{$ctrl.rhyme[1].word}} </div> 
-		<div class = 'helpers'>{{$ctrl.rhyme[2].word}} </div> 
-		<div class = 'helpers'>{{$ctrl.rhyme[3].word}} </div>
-		<div class = 'helpers'>{{$ctrl.rhyme[4].word}} </div>
+		<div class = 'helpers'> {{$ctrl.rhyme[1]}} </div> 
+		<div class = 'helpers'>{{$ctrl.rhyme[2]}} </div> 
+		<div class = 'helpers'>{{$ctrl.rhyme[3]}} </div>
+		<div class = 'helpers'>{{$ctrl.rhyme[4]}} </div>
 	</div>
 	<br/> 
 	<button ng-click='$ctrl.getRhymes()'>New Rhymes!</button>
