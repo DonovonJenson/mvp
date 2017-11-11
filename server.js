@@ -38,12 +38,10 @@ var getRhymes = (rhymeWord, res) => {
 
 	//Rhymebrain results 
 	var brainurl = 'http://rhymebrain.com/talk?function=getRhymes&word=' + rhymeWord;
-	console.log(brainurl)
 	var brainOptions = {
 		uri: brainurl
 	}
 	request(brainOptions, (error, response, body) => {
-		console.log(body);
 		res.send(body);
 
 	})

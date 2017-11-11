@@ -11,6 +11,14 @@ angular.module('app')
 	  	if (response.data.length < 5){
 	  		this.getRhymes();
 	  	} else {
+	  		response.data.sort((a,b) => {
+	  		if (a.score !== b.score){
+	  			return b.score - a.score
+	  		} else {
+			return b.freq - a.freq;
+			  }
+			})
+			console.log(response.data)
 	  		this.rhyme = response.data
 	  	}
   		})
