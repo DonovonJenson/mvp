@@ -5,6 +5,27 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var http = require('http');
 var request = require('request')
+var db = mongoose.connection;
+mongoose.connect('mongodb://localhost/test');
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('mongo connected!')
+});
+
+var rhymeSchema = mongoose.Schema ({
+	core: String,
+	rhymeSet: Array
+})
+
+var Rhymeset = mongoose.model('Rhymeset',rhymeSchema);
+
+var rhymeArray = ['one','done','fun']
+var newRhymes = new Rhymeset({core:'spun',rhymeSet: rhymeArray})
+newRhymes.save((err,newRhymes)=>{
+	console.log(newRhymes);
+})
+
+
 
 app.use(express.static(__dirname + '/public'))
 app.use(morgan('dev'));
@@ -15,7 +36,6 @@ app.listen(8080);
 console.log('App listening on 8080')
 
 app.get('/', (req, res) => {
-	console.log('somethinghappened')
 	res.status(200);
 	res.sendfile('./public/index.html')
 })
@@ -37,6 +57,7 @@ var getRhymes = (rhymeWord, res) => {
 	request(brainOptions, (error, response, body) => {
 		res.send(body);
 	})
+
 
 }
 

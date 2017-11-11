@@ -28,7 +28,7 @@ angular.module('app')
 
       this.$onInit = () => {
       	this.getRhymes();
-        var continousRhymes = setInterval(this.getRhymes, this.speed);
+        //var continousRhymes = setInterval(this.getRhymes, this.speed);
       };
 
       this.speedIncrease = () => {
