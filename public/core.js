@@ -7,12 +7,13 @@ angular.module('app')
 
 	  this.getRhymes = () => {
 	  	$http.get('/rhymes', {}).then((response) => {
-	  	this.rhyme = response.data
-	  	if (this.rhyme.length === 0){
+	  		console.log(response.data)
+	  	if (response.data.length < 5){
 	  		this.getRhymes();
+	  	} else {
+	  		this.rhyme = response.data
 	  	}
   		})
-  		 console.log(this)
       }
 
       this.$onInit = () => {
@@ -23,6 +24,6 @@ angular.module('app')
     },
 
 
-    template: 'Your Word Is: {{$ctrl.rhyme[0].word}}!'
+    templateUrl: './template.html' 
 
 });

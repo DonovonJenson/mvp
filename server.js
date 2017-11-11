@@ -22,7 +22,6 @@ app.get('/', (req, res) => {
 
 app.get('/rhymes', (req, res) => {
 
-
 	console.log('rhymes incoming!');
 	res.status(200);
 	request('http://setgetgo.com/randomword/get.php', (error, response, body) => {
