@@ -37,10 +37,11 @@ angular.module('app')
       }
 
       this.remove = () => {
-      	this.rhyme = ['DELETED','B','Y','E','!']
       	$http.post('/remove', {core: this.rhyme[0]}, { headers: { 'Content-Type': 'application/json' }}).then((response) =>{
       		console.log(response);
       	})
+      	this.rhyme = ['DELETED','B','Y','E','!']
+
       }
 
       this.pause = () => {

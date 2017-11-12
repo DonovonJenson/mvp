@@ -32,9 +32,9 @@ h1 {
 .mainword {
 	font-size: 50px;
 	color: black;
-	width:50%;
+	width:auto;
 	display:inline-block;
-	padding: 5px;
+	padding: 5px 50px 5px 50px;
 	border: 2px solid black;
 	font-family: 'Roboto', sans-serif;
 	background-color:deepskyblue;
