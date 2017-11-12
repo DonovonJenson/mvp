@@ -46,9 +46,9 @@ app.post('/remove', (req, res) =>{
 
 app.get('/rhymes', (req, res) => {
 	res.status(200);
-	//request('http://setgetgo.com/randomword/get.php', (error, response, body) => {
-    	//getRhymes(body, res);
-    //});
+	request('http://setgetgo.com/randomword/get.php', (error, response, body) => {
+    	getRhymes(body, res);
+    });
     getRhymesFromDatabase(res);
 })
 

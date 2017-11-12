@@ -17,9 +17,18 @@ h1 {
 	border: 1px solid black;
 }
 
+.allbutmusic {
+	width:auto;
+	background-color: darkgray;
+	padding: 0px 75px 0px 75px;
+	display:inline-block;
+}
+
 .buttonbox {
-	background-color:lightgray;
-	border-radius: 10px;
+}
+
+.youtube {
+	padding: 7px 0px 0px 0px;
 }
 
 .bottombox {
