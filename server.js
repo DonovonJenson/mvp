@@ -14,7 +14,7 @@ db.once('open', function() {
 });
 
 var rhymeSchema = mongoose.Schema ({
-	core: String,
+	core: String, 
 	rhymeSet: Array
 })
 
@@ -40,17 +40,16 @@ app.post('/remove', (req, res) =>{
 	res.status(201);
 	console.log(req.body)
 	Rhymeset.find({ core:req.body.core}).remove( (err, info)=>{
-		console.log(info)
 		res.send('removed!' + req.body.core)
 	} )
 })
 
 app.get('/rhymes', (req, res) => {
 	res.status(200);
-	getRhymesFromDatabase(res);
 	request('http://setgetgo.com/randomword/get.php', (error, response, body) => {
-    //getRhymes(body, res);
+    	getRhymes(body, res);
     });
+    getRhymesFromDatabase(res);
 })
 
 var getRhymesFromDatabase = (res) => {
@@ -74,6 +73,10 @@ var getRhymes = (rhymeWord, res) => {
 	rp(brainOptions, (error, response, body) => {})
 	.then((body) =>{
 		body = JSON.parse(body)
+		if (body[0].freq > 17){
+		console.log(body[0]);
+		var zero = body[0].word;
+		body.shift();
 	  		body.sort((a,b) => {
   		if (a.score !== b.score){
   			return b.score - a.score
@@ -83,12 +86,13 @@ var getRhymes = (rhymeWord, res) => {
 		  return b.freq - a.freq;
 		  }
 	})
-	var currentRhyme = body[0].word
+	var currentRhyme = zero;
 	var rhymes = [body[1].word,body[2].word,body[3].word,body[4].word]
 	var newRhymes = new Rhymeset({core:currentRhyme,rhymeSet: rhymes})
 	newRhymes.save((err,newRhymes)=>{
-			//console.log(newRhymes)
+			console.log(err,newRhymes)
 		})
+}
 	//res.send(body);
 	})
 

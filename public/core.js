@@ -13,7 +13,6 @@ angular.module('app')
 	  		response.data[0].rhymeSet.unshift(response.data[0].core)
 	  		this.rhyme = response.data[0].rhymeSet;
 	  		console.log(this.rhyme)
-
   	 	})
       }
 
@@ -24,19 +23,20 @@ angular.module('app')
 
       this.speedIncrease = () => {
       	$interval.cancel(this.go)
-      	this.speed -= 1000;
+      	this.speed -= 500;
       	this.go = $interval(this.getRhymes, this.speed);
       	console.log(this.go)
       }
 
       this.speedDecrease = () => {
       	$interval.cancel(this.go)
-      	this.speed += 1000;
+      	this.speed += 500;
       	this.go = $interval(this.getRhymes, this.speed);
       	console.log(this.go)
       }
 
       this.remove = () => {
+      	this.rhyme = ['DELETED','B','Y','E','!']
       	$http.post('/remove', {core: this.rhyme[0]}, { headers: { 'Content-Type': 'application/json' }}).then((response) =>{
       		console.log(response);
       	})
