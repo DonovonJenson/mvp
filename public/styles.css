@@ -2,20 +2,42 @@ body {
 	text-align: center;
 	font-family: 'Gloria Hallelujah', cursive;
 	background-color:lightgrey;
+	font-size:18px;
+	font-weight:bolder;
 }
 
 h1 {
 	font-family: 'Archivo Black', sans-serif;
+	background-color:white;
+	width: 50%;
+	display:inline-block;
+	background-color: lightblue;
+	border-radius: 30px;
+	padding: 5px;
+	border: 1px solid black;
+}
+
+.buttonbox {
+	background-color:lightgray;
+	border-radius: 10px;
+}
+
+.bottombox {
+	background-color: gray;
+	border-radius: 10px;
+	width: auto;
+	display:inline-block;
 }
 
 .mainword {
 	font-size: 50px;
-	color: blue;
-	width: auto;
+	color: black;
+	width:50%;
+	display:inline-block;
 	padding: 5px;
 	border: 2px solid black;
-	font-family: 'Permanent Marker', cursive;
-	background-color:darkgrey;
+	font-family: 'Roboto', sans-serif;
+	background-color:deepskyblue;
 	border-radius:100px;
 }
 
@@ -23,11 +45,12 @@ h1 {
 	font-size: 30px;
 	width:auto;
 	margin: 10px;
-	padding: 5px;
+	padding: 7px;
 	border: 2px solid black;
-	font-family: 'Permanent Marker', cursive;
+	font-family: 'Roboto', sans-serif;
 	border-radius: 10px;
-	background-color:white;
+	background-color: deepskyblue;
+	color: black;
 }
 
 #allhelpers {
@@ -36,6 +59,20 @@ h1 {
 	justify-content: center;
 }
 
-button {
-	text-align:center;
-}
+button
+{
+	display: inline-block;
+	font-size: 1.1em;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 10px 15px;
+	margin: 20px auto;
+	color: #ccc;
+	background-color: #555;
+	background: -webkit-linear-gradient(#888, #555);
+	background: linear-gradient(#888, #555);
+	border: 0 none;
+	border-radius: 3px;
+	text-shadow: 0 -1px 0 #000;
+	box-shadow: 0 1px 0 #666, 0 5px 0 #444, 0 6px 6px rgba(0,0,0,0.6);
+	cursor: pointer;

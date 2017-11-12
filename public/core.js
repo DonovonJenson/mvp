@@ -7,6 +7,7 @@ angular.module('app')
 	  this.speed = 4000;
 	  this.go;
 	  this.going = true;
+	  this.status = 'Pause'
 
 	  this.getRhymes = () => {
 	  	$http.get('/rhymes', {}).then((response) => {
@@ -46,8 +47,10 @@ angular.module('app')
       	console.log(this.going);
       	if (this.going){
       	  $interval.cancel(this.go);
+      	  this.status = 'Play'
       	} else {
       	  this.go = $interval(this.getRhymes, this.speed);
+      	  this.status = 'Pause'
       	}
       	this.going = !this.going;
       }
